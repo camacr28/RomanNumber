@@ -29,7 +29,5 @@ def to_roman(n):
         result = valors[50] + ((n//10) - 5) * valors[10]
     elif n == 90:
         result = valors[10] + valors[100]
-    else:
-        result = valors[n]
 
     return result
