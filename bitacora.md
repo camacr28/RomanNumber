@@ -5,8 +5,5 @@
 to_roman(n: int) -> str
 ```
 
-- 1 -> 'I'
-- 5 -> 'V'
-- 10 -> 'X'
-- 50-> 'L'
-- 1 -> 'I'
+- Test de unidades simples
+- Test de unidades compuestas
