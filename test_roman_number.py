@@ -54,10 +54,11 @@ def test_dividir_en_digitos():
     assert dividir_en_digitos(2024) == [2000, 0, 20, 4]
 
 
-def dconversion():
+def conversion():
     assert arabic_to_roman(970) == 'MCMLXX'
     assert arabic_to_roman(1999) == 'MCMXCIX'
     assert arabic_to_roman(2024) == 'MMXXIV'
     assert arabic_to_roman(33) == 'XXXIII'
     assert arabic_to_roman(100) == 'C'
     assert arabic_to_roman(3999) == 'MMMCMXCIX'
+    assert arabic_to_roman(1092) == 'MXCII'

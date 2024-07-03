@@ -9,7 +9,7 @@ values = {
 }
 
 
-def to_roman(n):
+def to_roman2(n):
 
     if n in values:
         result = values[n]
@@ -37,8 +37,23 @@ def to_roman(n):
         result = values[500] + (n//100 - 5) * values[100]
     elif n == 900:
         result = values[100] + values[1000]
-    elif n <= 3000:
-        result = n//1000*values[1000]
+
+    return result
+
+
+def to_roman(n):
+
+    order = 10**(len(str(n))-1)
+    d = n//order
+
+    if d <= 3:
+        result = d * values[order]
+    elif d == 4:
+        result = values[order] + values[5*order]
+    elif d < 9:
+        result = values[5*order] + (d - 5) * values[order]
+    elif d == 9:
+        result = values[order] + values[10*order]
 
     return result
 
@@ -50,7 +65,7 @@ def dividir_en_digitos(n: int):
 
     for digito in cad:
         lista_nums.append(int(digito) * mult)
-        mult /= 10
+        mult //= 10
 
     return lista_nums
 
