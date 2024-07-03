@@ -43,8 +43,7 @@ def to_roman2(n):
 
 def to_roman(n):
 
-    order = 10**(len(str(n))-1)
-    d = n//order
+    order, d = calc_d_order(n)
 
     if d <= 3:
         result = d * values[order]
@@ -56,6 +55,12 @@ def to_roman(n):
         result = values[order] + values[10*order]
 
     return result
+
+
+def calc_d_order(n):
+    order = 10**(len(str(n))-1)
+    d = n//order
+    return order, d
 
 
 def dividir_en_digitos(n: int):
@@ -81,3 +86,6 @@ def digits_to_roman(lista_nums: list):
 def arabic_to_roman(n: int):
     lista = dividir_en_digitos(n)
     return digits_to_roman(lista)
+
+
+print(arabic_to_roman(970))
