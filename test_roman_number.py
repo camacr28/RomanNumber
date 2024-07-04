@@ -1,4 +1,4 @@
-from roman_funcs import to_roman, dividir_en_digitos, arabic_to_roman
+from roman_funcs import arabic_to_roman, divide_en_miles, dividir_en_digitos, to_roman
 
 
 def test_romanos_simples():
@@ -61,4 +61,20 @@ def test_conversion():
     assert arabic_to_roman(34) == 'XXXIV'
     assert arabic_to_roman(100) == 'C'
     assert arabic_to_roman(3999) == 'MMMCMXCIX'
-    assert arabic_to_roman(1092) == 'MXCII'
+    assert arabic_to_roman(1902) == 'MCMII'
+
+
+def test_romano_mayor_3999():
+    assert arabic_to_roman(4127) == 'IV*CXXVII'
+    assert arabic_to_roman(3956412) == 'MMMCMLVI*CDXII'
+    assert arabic_to_roman(4956412) == 'IV**CMLVI*CDXII'
+
+
+def test_divide_en_miles():
+    assert divide_en_miles(4127) == [127, 4]
+    assert divide_en_miles(3127) == [3127]
+
+
+def test_divide_en_miles_pero_con_millones():
+    assert divide_en_miles(4123234) == [234, 123, 4]
+    assert divide_en_miles(3123234) == [234, 3123]

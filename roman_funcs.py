@@ -9,38 +9,6 @@ values = {
 }
 
 
-def to_roman2(n):
-
-    if n in values:
-        result = values[n]
-    elif n <= 3:
-        result = n * values[1]
-    elif n == 4:
-        result = values[1] + values[5]
-    elif n < 9:
-        result = values[5] + (n - 5) * values[1]
-    elif n == 9:
-        result = values[1] + values[10]
-    elif n <= 30:
-        result = (n//10) * values[10]
-    elif n == 40:
-        result = values[10] + values[50]
-    elif n < 90:
-        result = values[50] + (n//10 - 5) * values[10]
-    elif n == 90:
-        result = values[10] + values[100]
-    elif n <= 300:
-        result = (n//100) * values[100]
-    elif n == 400:
-        result = values[100] + values[500]
-    elif n < 900:
-        result = values[500] + (n//100 - 5) * values[100]
-    elif n == 900:
-        result = values[100] + values[1000]
-
-    return result
-
-
 def to_roman(n):
 
     order, d = calc_d_order(n)
@@ -84,8 +52,33 @@ def digits_to_roman(lista_nums: list):
 
 
 def arabic_to_roman(n: int):
-    lista = dividir_en_digitos(n)
-    return digits_to_roman(lista)
+    miles = divide_en_miles(n)
+    result = ''
+    for num_asteriscos, cifra in enumerate(miles):
+        lista = dividir_en_digitos(cifra)
+        romano = digits_to_roman(lista)
+        if romano != '':
+            romano += '*' * num_asteriscos
+        result = romano + result
+
+    return result
 
 
-print(arabic_to_roman(970))
+def divide_en_miles(n: int):
+    lista_nums = []
+    modulo = n % 1000
+    entero = n//1000
+
+    while entero > 999:
+        lista_nums.append(modulo)
+        n = entero
+        modulo = entero % 1000
+        entero = entero // 1000
+
+    if entero < 4:
+        lista_nums.append(n)
+    else:
+        lista_nums.append(modulo)
+        lista_nums.append(entero)
+
+    return lista_nums
