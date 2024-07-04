@@ -68,6 +68,8 @@ def test_romano_mayor_3999():
     assert arabic_to_roman(4127) == 'IV*CXXVII'
     assert arabic_to_roman(3956412) == 'MMMCMLVI*CDXII'
     assert arabic_to_roman(4956412) == 'IV**CMLVI*CDXII'
+    na = int(6.022e23)
+    assert arabic_to_roman(na) == "DCII*******CC******XXVII**CCLXII*CMLXXVI"
 
 
 def test_divide_en_miles():
